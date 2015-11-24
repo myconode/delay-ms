@@ -1,0 +1,11 @@
+.*
+
+# Allowed dot files
+!.gitignore
+
+node_modules/
+debug/
+log/
+build/
+
+.log

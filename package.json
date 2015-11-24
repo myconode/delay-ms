@@ -1,0 +1,22 @@
+{
+  "name": "delay-lite",
+  "description": "Halt script execution for given number of microseconds",
+  "version": "1.0.0",
+  "author": "thelostspore <thelostspore@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:thelostspore/delay-lite"
+  },
+  "main": "index.js",
+  "scripts": {
+    "main": "node index.js"
+  },
+  "keywords": ["delay", "delay lite", "delay-lite", "tessel delay", "halt" ],
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^2.0.0",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.1.0"
+  }
+}
