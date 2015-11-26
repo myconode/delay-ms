@@ -5,7 +5,7 @@
 // Copyright (c) 2015 Erik Dubbelboer
 // License: MIT
 
-// @param {number} ms - milliseconds
+// @param {number} ms - miliseconds
 module.exports = function delay(ms){
   var then = new Date().getTime() + (ms)
   while (new Date().getTime() <= then){ /* jshint noempty:false */ }
