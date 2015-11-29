@@ -9,14 +9,14 @@
   },
   "main": "index.js",
   "scripts": {
-    "main": "node index.js"
+    "main": "node index.js",
+    "test": "gulp"
   },
-  "keywords": ["delay", "delay lite", "delay-lite", "tessel delay" ],
+  "keywords": [ "delay", "delay lite", "delay-lite", "tessel delay" ],
   "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-jshint": "^2.0.0",
-    "jshint": "^2.8.0",
-    "jshint-stylish": "^2.1.0"
+    "gulp": "3.9.0",
+    "gulp-jshint": "1.12.0",
+    "lodash": "^3.0.0"
   }
 }

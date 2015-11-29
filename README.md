@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/thelostspore/delay-lite.svg?branch=master)](https://travis-ci.org/thelostspore/delay-lite)
+
 # Delay
 Halt script execution for given number of miliseconds
 ```

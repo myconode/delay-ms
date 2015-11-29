@@ -2,6 +2,7 @@
 
 # Allowed dot files
 !.gitignore
+!.travis.yml
 
 node_modules/
 debug/
