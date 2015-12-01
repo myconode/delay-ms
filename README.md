@@ -9,7 +9,8 @@ delay(2000)
 console.log("..World")
 ```
 
-Made for micrco-controllers running Javascript, such as the [Tessel](https://tessel.io/)
+Made for micrco-controllers running Javascript, such as the [Tessel](https://tessel.io/).
+
 Inspired by Arduino's built-in [delay](https://www.arduino.cc/en/Reference/Delay)
 
 
