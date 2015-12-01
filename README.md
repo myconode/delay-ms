@@ -9,6 +9,13 @@ delay(2000)
 console.log("..World")
 ```
 
-## Notes
-- Useful for Javascript micrco-controllers such as the [Tessel](https://tessel.io/).
-- Inspired by Arduino's built-in [delay](https://www.arduino.cc/en/Reference/Delay)
+Made for micrco-controllers running Javascript, such as the [Tessel](https://tessel.io/)
+Inspired by Arduino's built-in [delay](https://www.arduino.cc/en/Reference/Delay)
+
+
+## Tests
+`mocha/chai` hooked into `gulp`
+
+```
+gulp tests
+```
