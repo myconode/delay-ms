@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/thelostspore/delay-lite.svg?branch=master)](https://travis-ci.org/thelostspore/delay-lite)
-[![npm version](https://badge.fury.io/js/delay-lite.svg)](https://badge.fury.io/js/delay-lite)
+[![Build Status](https://travis-ci.org/thelostspore/delay-ms.svg?branch=master)](https://travis-ci.org/thelostspore/delay-ms)
+[![npm version](https://badge.fury.io/js/delay-ms.svg)](https://badge.fury.io/js/delay-ms)
 
 # Delay
 Halt script execution for given number of miliseconds

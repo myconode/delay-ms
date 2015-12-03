@@ -1,11 +1,11 @@
 {
-  "name": "delay-lite",
+  "name": "delay-ms",
   "description": "Halt script execution for given number of miliseconds",
   "version": "0.1.0",
   "author": "thelostspore <thelostspore@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git@github.com:thelostspore/delay-lite"
+    "url": "git@github.com:thelostspore/delay-ms"
   },
   "main": "index.js",
   "scripts": {
@@ -14,8 +14,7 @@
   },
   "keywords": [
     "delay",
-    "delay lite",
-    "delay-lite",
+    "delay-ms",
     "tessel delay"
   ],
   "license": "MIT",
