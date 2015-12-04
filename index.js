@@ -1,4 +1,4 @@
-// Halt script execution for given number of microseconds.
+// Halt script execution for given number of miliseconds.
 // Inspired by Arduino's built-in delay().
 //
 // Lite version of [ErikDubbelboer's sleep](github.com/ErikDubbelboer/node-sleep)
