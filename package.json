@@ -10,7 +10,7 @@
   "main": "index.js",
   "scripts": {
     "main": "node index.js",
-    "test": "gulp"
+    "test": "gulp test"
   },
   "keywords": [
     "delay",
@@ -19,11 +19,10 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "chai": "^3.4.1",
     "gulp": "3.9.0",
     "gulp-jshint": "1.12.0",
     "gulp-mocha": "^2.2.0",
-    "lodash": "^3.0.0",
-    "mocha": "^2.3.4"
+    "mocha": "^2.3.4",
+    "chai": "^3.4.1"
   }
 }

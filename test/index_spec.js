@@ -9,9 +9,24 @@ describe('delay', function(){
   let maxDelay = 20000
   this.timeout( maxDelay )
 
-  it('should have a +/- 3 millisecond tolerance', function(){
-    let firstDelay = execTime(delay, [1000])
-    expect( firstDelay ).to.be.within(997, 1003)
+  let cases = [ 60,
+                80,
+                100,
+                250,
+                500,
+                1000
+              ]
+
+  it('should have a +/- 2 millisecond tolerance', function(){
+    cases.forEach(function(ms){
+      let et = execTime(delay, [ ms ])
+
+      let lowerBound = ms - 2,
+          upperBound = ms + 2
+
+      expect( et ).to.be.within( lowerBound , upperBound)
+    })
+
   })
 })
 
