@@ -1,10 +1,18 @@
 'use strict'
 
-const gulp = require('gulp')
-const mocha = require('gulp-mocha')
+// Standard lib, Gulp
+const fs = require('fs')
+const spawn = require('child_process').spawn
+const gulp  = require('gulp')
 
 // Plugins
 const jshint = require('gulp-jshint')
+const mocha  = require('gulp-mocha')
+const git = require('gulp-git')
+
+// Utilities
+const gutil = require('gulp-util')
+const Q = require('q')
 
 // File References
 const ROOT = "./"
@@ -13,7 +21,10 @@ const GULPFILE = ROOT + 'gulpfile.js'
 const INDEX = ROOT + 'index.js'
 const TESTS = ROOT + 'test/**/*'
 
-const jshint_config = { node:true, asi:true, esnext:true }
+const jshint_config = { node:true,
+                        asi:true,
+                        esnext:true
+                      }
 
 // Task definition
 gulp.task('lint', function(){
@@ -27,6 +38,43 @@ gulp.task('test', function(){
 
   return gulp.src( TESTS )
     .pipe( mocha( config ) )
+    .on('error', gutil.log);
 })
 
+gulp.task('publish', ['lint', 'test'], function (done) {
+  spawn('npm', ['publish'], { stdio: 'inherit' })
+    .on('close', done);
+});
+
+
+gulp.task('tag', ['lint', 'test'], function(done){
+  let tag = 'v' + PKG.version
+  let message = "npm release"
+
+  let tagged = Q.defer()
+
+  git.tag(tag, message, function (err) {
+    if (err){
+      console.log("Gulp: git tag failed:\n" + err)
+      process.exit(1)
+    } else {
+      tagged.resolve()
+    }
+  })
+
+  tagged.promise.then(function(){
+    git.push('origin', tag, function(err){
+      if(err) {
+        console.log("Gulp: git push failed:\n" + err)
+        process.exit(1)
+      } else {
+        done()
+      }
+    })
+  })
+
+})
+
+
 gulp.task('default', ['lint'] )
+gulp.task('release', ['tag', 'publish'])

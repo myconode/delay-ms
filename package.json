@@ -19,10 +19,13 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "chai": "^3.4.1",
     "gulp": "3.9.0",
+    "gulp-git": "^1.6.0",
     "gulp-jshint": "1.12.0",
     "gulp-mocha": "^2.2.0",
+    "gulp-util": "^3.0.7",
     "mocha": "^2.3.4",
-    "chai": "^3.4.1"
+    "q": "^1.4.1"
   }
 }

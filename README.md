@@ -20,3 +20,11 @@ Inspired by Arduino's built-in [delay](https://www.arduino.cc/en/Reference/Delay
 ```
 gulp tests
 ```
+
+
+## Release
+Create git tag & github release, publishes package to npm registry.
+
+```
+gulp release
+```
