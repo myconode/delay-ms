@@ -5,8 +5,10 @@
 [![devDependency Status](https://david-dm.org/thelostspore/delay-ms/dev-status.svg)](https://david-dm.org/thelostspore/delay-ms#info=devDependencies)
 
 # Delay
-Halt script execution for given number of miliseconds
-```
+Halt script execution for given number of milliseconds
+```node
+const delay = require('delay-ms')
+
 console.log("Hello..")
 delay(2000)
 console.log("..World")
