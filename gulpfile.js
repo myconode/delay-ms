@@ -8,7 +8,9 @@ const gulp  = require('gulp')
 // Plugins
 const jshint = require('gulp-jshint')
 const mocha  = require('gulp-mocha')
+const uglify = require('gulp-uglify')
 const git = require('gulp-git')
+const del = require('del')
 
 // Utilities
 const gutil = require('gulp-util')
@@ -16,41 +18,61 @@ const Q = require('q')
 
 // File References
 const ROOT = "./"
-const PKG  = JSON.parse(fs.readFileSync(ROOT + 'package.json'))
+const PKG_JSON = ROOT + 'package.json'
+const PKG_DATA = JSON.parse(fs.readFileSync(PKG_JSON))
 const GULPFILE = ROOT + 'gulpfile.js'
 const INDEX = ROOT + 'index.js'
 const TESTS = ROOT + 'test/**/*'
+
+const BUILD_DIR = ROOT + "build/"
 
 const jshint_config = { node:true,
                         asi:true,
                         esnext:true
                       }
 
-// Task definition
+// Tasks
+gulp.task('default', ['lint'] )
+
+
+gulp.task('release', ['tag'], function(done){
+  // Delete build directory after release
+  del( [ BUILD_DIR + "/**", BUILD_DIR ] )
+})
+
+
 gulp.task('lint', function(){
   return gulp.src( [ GULPFILE, INDEX, TESTS ] )
     .pipe( jshint( jshint_config ) )
     .pipe( jshint.reporter('default', { verbose: true } ))
 })
 
-gulp.task('test', function(){
+
+gulp.task('test', ['lint'], function(){
   let config = { reporter: 'dot'}
 
   return gulp.src( TESTS )
     .pipe( mocha( config ) )
-    .on('error', gutil.log);
+    .on('error', gutil.log)
 })
 
-gulp.task('publish', ['lint', 'test'], function (done) {
+
+gulp.task('build', ['test'], function(){
+  return gulp.src( INDEX )
+    .pipe( uglify() )
+    .pipe( gulp.dest( BUILD_DIR ) )
+})
+
+
+gulp.task('publish', ['build'], function (done) {
   spawn('npm', ['publish'], { stdio: 'inherit' })
     .on('close', done);
-});
+})
 
 
-gulp.task('tag', ['lint', 'test'], function(done){
-  let tag = 'v' + PKG.version
+gulp.task('tag', ['publish'], function(done){
+  let tag = 'v' + PKG_DATA.version
   let message = "npm release"
-
   let tagged = Q.defer()
 
   git.tag(tag, message, function (err) {
@@ -72,9 +94,4 @@ gulp.task('tag', ['lint', 'test'], function(done){
       }
     })
   })
-
 })
-
-
-gulp.task('default', ['lint'] )
-gulp.task('release', ['tag', 'publish'])
