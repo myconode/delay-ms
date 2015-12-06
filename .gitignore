@@ -8,5 +8,8 @@ node_modules/
 debug/
 log/
 build/
+package/
 
 .log
+.zip
+.tgz

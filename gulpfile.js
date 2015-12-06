@@ -8,9 +8,7 @@ const gulp  = require('gulp')
 // Plugins
 const jshint = require('gulp-jshint')
 const mocha  = require('gulp-mocha')
-const uglify = require('gulp-uglify')
 const git = require('gulp-git')
-const del = require('del')
 
 // Utilities
 const gutil = require('gulp-util')
@@ -24,8 +22,6 @@ const GULPFILE = ROOT + 'gulpfile.js'
 const INDEX = ROOT + 'index.js'
 const TESTS = ROOT + 'test/**/*'
 
-const BUILD_DIR = ROOT + "build/"
-
 const jshint_config = { node:true,
                         asi:true,
                         esnext:true
@@ -34,20 +30,13 @@ const jshint_config = { node:true,
 // Tasks
 gulp.task('default', ['lint'] )
 
-
-gulp.task('release', ['tag'], function(done){
-  // Delete build directory after release
-  del( [ BUILD_DIR + "/**", BUILD_DIR ] )
-})
-
-
 gulp.task('lint', function(){
   return gulp.src( [ GULPFILE, INDEX, TESTS ] )
     .pipe( jshint( jshint_config ) )
     .pipe( jshint.reporter('default', { verbose: true } ))
 })
 
-
+// mocha tests
 gulp.task('test', ['lint'], function(){
   let config = { reporter: 'dot'}
 
@@ -57,20 +46,15 @@ gulp.task('test', ['lint'], function(){
 })
 
 
-gulp.task('build', ['test'], function(){
-  return gulp.src( INDEX )
-    .pipe( uglify() )
-    .pipe( gulp.dest( BUILD_DIR ) )
-})
-
-
-gulp.task('publish', ['build'], function (done) {
+// npm publish if tests pass
+gulp.task('publish', ['test'], function (done) {
   spawn('npm', ['publish'], { stdio: 'inherit' })
     .on('close', done);
 })
 
 
-gulp.task('tag', ['publish'], function(done){
+// create git tag & github release if package was published
+gulp.task('release', ['publish'], function(done){
   let tag = 'v' + PKG_DATA.version
   let message = "npm release"
   let tagged = Q.defer()

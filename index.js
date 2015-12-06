@@ -8,5 +8,5 @@
 // @param {number} ms - milliseconds
 module.exports = function delay(ms){
   var then = new Date().getTime() + (ms)
-  while (new Date().getTime() <= then){ /* jshint noempty:false */ }
+  while (new Date().getTime() <= then){ /* waits */ }
 }

@@ -11,4 +11,3 @@ Create git tag & github release, publish package to npm registry
 ```
 gulp release
 ```
-
