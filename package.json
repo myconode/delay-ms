@@ -1,7 +1,7 @@
 {
   "name": "delay-ms",
   "description": "Halt script execution for given number of milliseconds",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "thelostspore <thelostspore@gmail.com>",
   "repository": {
     "type": "git",
