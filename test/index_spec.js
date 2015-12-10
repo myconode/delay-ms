@@ -3,7 +3,7 @@
 'use strict'
 
 const expect = require('chai').expect
-const delay  = require('../index')
+const delay  = require('../lib/index')
 
 describe('delay', function(){
   let maxDelay = 20000

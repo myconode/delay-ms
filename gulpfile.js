@@ -1,6 +1,6 @@
 'use strict'
 
-// Standard lib, Gulp
+// Standard libs, Gulp
 const fs = require('fs')
 const spawn = require('child_process').spawn
 const gulp  = require('gulp')

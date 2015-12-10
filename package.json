@@ -7,18 +7,26 @@
     "type": "git",
     "url": "git@github.com:thelostspore/delay-ms"
   },
-  "files": [ "index.js" ],
-  "main": "index.js",
-  "directories": [ "./test" ],
+
+  "main": "lib/index.js",
+
+  "files": [ "./lib" ],
+
+  "directories": [ "./test",
+                   "./lib" ],
+
   "scripts": {
     "test": "gulp test"
   },
+
   "keywords": [
     "delay",
     "delay-ms",
     "tessel delay"
   ],
+
   "license": "MIT",
+
   "devDependencies": {
     "chai": "^3.4.1",
     "gulp": "3.9.0",
